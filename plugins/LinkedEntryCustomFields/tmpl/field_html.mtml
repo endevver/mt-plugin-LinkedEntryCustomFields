@@ -26,6 +26,8 @@
 </div>
 <div class="actions-bar" style="clear: none">
     <div class="actions-bar-inner pkg actions">
+
+    <mt:If tag="Version" like="/^4/">
         <button type="submit"
             onclick="return openDialog(this.form, 'list_entry_mini', 'blog_id=<mt:var name="field_blog_id">&amp;cat_ids=<mt:var name="field_categories" escape="url">&amp;edit_field=<mt:var name="field_id" escape="JS">')"
             ><__trans phrase="Choose Entry"></button>
@@ -36,5 +38,18 @@
                 onclick="insertCustomFieldEntry('', '', '<mt:var name="field_id" escape="JS">'); return false"
                 ><__trans phrase="Remove Entry"></button>
         </mt:unless>
+
+    <mt:Else>
+        <a class="mt-open-dialog button"
+            href="<mt:Var name="script_uri">?__mode=list_entry_mini&amp;blog_id=<mt:Var name="field_blog_id">&amp;cat_ids=<mt:var name="field_categories" escape="url">&amp;edit_field=<mt:var name="field_id" escape="JS">"
+            ><__trans phrase="Choose Entry"></a>
+        <mt:unless name="required">
+            <a class="button<mt:Unless name="value"> hidden</mt:Unless>"
+                id="<mt:var name="field_id">_remove_entry"
+                onclick="insertCustomFieldEntry('', '', '<mt:var name="field_id" escape="JS">'); return false"
+                ><__trans phrase="Remove Entry"></a>
+        </mt:unless>
+    </mt:If>
+
     </div>
 </div>

@@ -15,7 +15,7 @@ field type that RightFields provided: the linked entry [2].
 
 ## PREREQUISITES ##
 
-* Movable Type 4.2
+* Movable Type 4.2+ or 5.2+
 * Movable Type Professional Pack
 
 ## INSTALLATION ##
