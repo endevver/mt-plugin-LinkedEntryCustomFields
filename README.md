@@ -42,20 +42,6 @@ There are no known issues with this release of the plugin.
 
 __specify where people can go for support__
 
-## SOURCE CODE ##
-
-Source
-
-SVN Repo:
-    http://code.sixapart.com/svn/mtplugins/trunk/LinkedEntryCustomFields
-
-Trac View:
-    http://code.sixapart.com/trac/mtplugins/log/trunk/LinkedEntryCustomFields
-
-Plugins:
-    http://plugins.movabletype.org/LinkedEntryCustomFields
-
-
 ## LICENSE ##
 
 __specify the license the plugin is released under__
