@@ -1,4 +1,3 @@
-
 package LinkedEntryCustomFields::App;
 use strict;
 use warnings;
@@ -11,7 +10,16 @@ sub field_html_params {
         my $e = MT->model('entry')->load($param->{value});
         $param->{field_preview} = $e->title if $e;
     }
-    @{$param}{qw( field_blog_id field_categories )} = split /\s*,\s*/, $param->{options}, 2;
+
+    my ($blog_id, $options_categories) = split /\s*,\s*/, $param->{options}, 2;
+    $param->{field_categories} = $options_categories;
+
+    # If there is no previosly saved $blog_id and if there is a blog context,
+    # fall back to the current blog as the default value.
+    if (!$blog_id && $param->{blog_id}) {
+        $blog_id = $param->{blog_id};
+    }
+    $param->{field_blog_id} = $blog_id;
 }
 
 sub inject_addl_field_settings {
@@ -26,6 +34,13 @@ sub inject_addl_field_settings {
 
     # Add supporting params for our new template code.
     my ($blog_id, $options_categories) = split /\s*,\s*/, $param->{options}, 2;
+
+    # If there is no previosly saved $blog_id and if there is a blog context,
+    # fall back to the current blog as the default value.
+    if (!$blog_id && $app->blog) {
+        $blog_id = $app->blog->id;
+    }
+
     my @blogs = map { +{
         blog_id       => $_->id,
         blog_name     => $_->name,
@@ -200,4 +215,3 @@ sub load_customfield_tags {
 }
 
 1;
-
