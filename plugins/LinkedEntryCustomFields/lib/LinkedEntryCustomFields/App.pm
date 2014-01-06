@@ -115,6 +115,7 @@ sub list_entry_mini {
             $row->{'status_' . lc MT::Entry::status_text($obj->status)} = 1;
             $row->{entry_permalink} = $obj->permalink
                 if $obj->status == MT::Entry->RELEASE();
+
             if (my $ts = $obj->authored_on) {
                 my $date_format = MT::App::CMS->LISTING_DATE_FORMAT();
                 my $datetime_format = MT::App::CMS->LISTING_DATETIME_FORMAT();
@@ -124,6 +125,10 @@ sub list_entry_mini {
                     $app->user ? $app->user->preferred_language : undef);
                 $row->{created_on_relative} = relative_date($ts, time, $obj->blog);
             }
+
+            my $author = MT->model('author')->load( $obj->author_id );
+            $row->{author_name} = $author ? $author->nickname : '';
+
             return $row;
         },
         terms => \%terms,
