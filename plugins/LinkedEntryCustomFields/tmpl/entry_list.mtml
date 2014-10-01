@@ -3,7 +3,9 @@
 <mt:SetVarBlock name="page_title"><__trans phrase="Insert Entry"></mt:SetVarBlock>
 <mt:setvarblock name="html_head" append="1">
     <script type="text/javascript" src="<mt:var name="static_uri">js/tc/client.js?v=<mt:var name="mt_version_id" escape="url">"></script>
+    <mt:If tag="Version" lt="5">
     <script type="text/javascript" src="<mt:var name="static_uri">js/tc/json.js?v=<mt:var name="mt_version_id" escape="url">"></script>
+    </mt:If>
     <script type="text/javascript" src="<mt:var name="static_uri">js/dialog.js?v=<mt:var name="mt_version_id" escape="url">"></script>
 
     <script type="text/javascript">
@@ -26,6 +28,7 @@
 
     var tableSelect;
     var dlg;
+
     function init() {
         // setup
         dlg = new Dialog.Simple("list-entries");

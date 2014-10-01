@@ -5,7 +5,7 @@ description: Provides conversion of RightFields plugin data to Movable Type Cust
 author_name: Six Apart, Ltd.
 author_link: http://www.sixapart.com/
 plugin_link: https://github.com/endevver/mt-plugin-LinkedEntryCustomFields
-version: 1.0.6
+version: 1.0.7
 
 schema_version: 1
 
