@@ -8,7 +8,15 @@ sub field_html_params {
     my ($field_type, $tmpl_type, $param) = @_;
     if ($param->{value}) {
         my $e = MT->model('entry')->load($param->{value});
-        $param->{field_preview} = $e->title if $e;
+        if ($e) {
+            my $cat = $e->category;
+            my $cat_label = $cat && $cat->label ? $cat->label . ': ' : '';
+            $param->{field_preview} = $cat_label . $e->title;
+            $param->{obj_id}        = $e->id;
+            $param->{obj_blog_id}   = $e->blog_id;
+            $param->{obj_permalink} = $e->status eq MT->model('entry')->RELEASE()
+                                          ? $e->permalink : '';
+        }
     }
 
     my ($blog_id, $options_categories) = split /\s*,\s*/, $param->{options}, 2;

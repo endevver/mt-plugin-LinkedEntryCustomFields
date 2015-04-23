@@ -21,9 +21,27 @@
     <mt:setvar name="entry_chooser_js" value="1">
 </mt:unless>
 <input name="<mt:var name="field_name">" id="<mt:var name="field_id">" class="hidden" type="hidden" value="<mt:var name="value" escape="html">" />
+
 <div id="<mt:var name="field_id">_preview" class="customfield_preview">
+<mt:If name="field_preview">
     <mt:var name="field_preview">
+    <a href="<mt:Var name="script_uri">?__mode=view&amp;_type=entry&amp;id=<mt:Var name="obj_id">&amp;blog_id=<mt:Var name="obj_blog_id">"
+        class="edit"
+        target="_blank"
+        title="Edit in a new window."><img
+            src="<mt:Var name="static_uri">images/status_icons/draft.gif"
+            width="9" height="9" alt="Edit" /></a>
+    <mt:If name="obj_permalink">
+    <a href="<mt:Var name="obj_permalink">"
+        class="view"
+        target="_blank"
+        title="View in a new window."><img
+            src="<mt:Var name="static_uri">images/status_icons/view.gif"
+            width="13" height="9" alt="View" /></a>
+    </mt:If>
+</mt:If>
 </div>
+
 <div class="actions-bar" style="clear: none">
     <div class="actions-bar-inner pkg actions">
 
